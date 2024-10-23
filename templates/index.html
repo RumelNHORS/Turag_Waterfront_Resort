@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+ 
+<head>
+  <title>Turag WaterFont Resort</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="static/css/style.css">
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  <!-- Include Lightbox2 JS only once -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+  
+  <!-- Include Lightbox2 CSS only once -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+
+</head>
+
+<body>
+  <section class="head">
+    <div class="container flex1">
+      <div class="scoial">
+          {% if social_media_info.facebook_link %}
+          <a href="{{ social_media_info.facebook_link }}" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          {% endif %}
+          {% if social_media_info.instagram_link %}
+            <a href="{{ social_media_info.instagram_link }}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-instagram"></i>
+            </a>
+            {% endif %}
+            {% if social_media_info.youtube_link %}
+            <a href="{{ social_media_info.youtube_link }}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-youtube"></i>
+            </a>
+            {% endif %}
+            {% if social_media_info.whatsapp_link %}
+            <a href="{{ social_media_info.whatsapp_link }}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            {% endif %}
+            {% if social_media_info.twitter_link %}
+            <a href="{{ social_media_info.twitter_link }}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-twitter"></i>
+            </a>
+            {% endif %}
+            {% if social_media_info.pinterest_link %}
+            <a href="{{ social_media_info.pinterest_link }}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-pinterest"></i>
+            </a>
+            {% endif %}
+            {% if social_media_info.tiktok_link %}
+            <a href="{{ social_media_info.tiktok_link }}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            {% endif %}
+      </div>
+      <div class="logo">
+        <img src="{{ social_media_info.logo.url }}" alt="">
+      </div>
+      <div class="address">
+        <i class="fas fa-map-marker-alt"></i>
+        {% comment %} <span>Mouchak, Gazipur, Dhaka</span> {% endcomment %}
+        <span>{{ social_media_info.address }}</span>
+      </div>
+    </div>
+  </section>
+
+  <header class="header">
+    <div class="container">
+      <nav class="navbar flex1">
+        <div class="sticky_logo logo">
+          {% comment %} <img src="static/image/turag-1.png" alt=""> {% endcomment %}
+          <img src="{{ social_media_info.logo.url }}" alt="">
+        </div>
+
+        <ul class="nav-menu">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'services' %}">Room</a></li>
+          <li><a href="{% url 'services' %}">Services</a></li>
+          <li><a href="{% url 'gallery' %}">Gallery</a></li>
+          <li><a href="{% url 'blog_list' %}">Blog</a></li>
+          <li><a href="https://turagwaterfrontresort.netlify.app">Online Booking</a></li> 
+          
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+
+        <div class="head_contact">
+          <i class="fas fa-phone-volume"></i>
+          <!--<span>{{ social_media_info.phone_number }}</span>-->
+          <span>{{ social_media_info.phone_number|slice:":14" }}</span>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobliemmenu);
+
+    function mobliemmenu() {
+      hamburger.classList.toggle("active");
+      navMenu.classList.toggle("active");
+    }
+
+    window.addEventListener("scroll", function() {
+      var header = document.querySelector("header");
+      header.classList.toggle("sticky", window.scrollY > 0)
+    })
+  </script>
+
+
+  <section class="home" id="home">
+
+    <video autoplay loop muted class="background-video">
+      <source src="{% static 'image/web_home_video.mp4' %}" type="video/mp4">
+      Your browser does not support the video tag.
+  </video>
+
+    <div class="container"><br><br>
+      <h2 style="font-size: 70px; color: white; margin-top: 20px; font-family: 'Arial', sans-serif; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); letter-spacing: 2px;text-transform: uppercase;">
+        {{ content.title }}
+      </h2>
+      <h1>{{ content.heading }}</h1>
+      <p>{{ content.subheading }}</p>
+
+      <!--<div class="content grid">-->
+      <!--  <div class="box">-->
+      <!--    <span>ARRIVAL DATE </span> <br>-->
+      <!--    <input type="date" placeholder="29/20/2021">-->
+      <!--  </div>-->
+      <!--  <div class="box">-->
+      <!--    <span>DEPARTURE DATE </span> <br>-->
+      <!--    <input type="date" placeholder="29/20/2021">-->
+      <!--  </div>-->
+      <!--  <div class="box">-->
+      <!--    <span>ADULTS</span> <br>-->
+      <!--    <input type="number" placeholder="01">-->
+      <!--  </div>-->
+      <!--  <div class="box">-->
+      <!--    <span>CHILDREN </span> <br>-->
+      <!--    <input type="number" placeholder="01">-->
+      <!--  </div>-->
+      <!--  <div class="box">-->
+      <!--    <a href="{% url 'services' %}" style="text-decoration: none; display: inline-flex; align-items: center; background-color: #CC8C18; color: white; border-radius: 4px; cursor: pointer;">-->
+      <!--      <button type="button" style="background: none; border: none; color: inherit; font: inherit; display: flex; align-items: center; cursor: pointer;">-->
+      <!--          <span>Check Availability</span>-->
+      <!--          <i class="fas fa-arrow-circle-right" style="margin-left: 8px;"></i>-->
+      <!--      </button>-->
+      <!--  </a>-->
+        
+      <!--  </a>-->
+      <!--  </div>-->
+      <!--</div>-->
+    </div>
+  </section>
+
+
+  <section class="about" id="about">
+    <div class="container">
+        <div class="heading">
+            <h5>EXPLORE</h5>
+            <h2>We are cool to give you pleasure
+            </h2>
+        </div>
+
+        <div class="content flex top">
+            <div class="left">
+                <h3>{{ about_section.heading }}</h3>
+                <p>{{ about_section.content }}</p>
+            </div>
+            <div class="right">
+                <img src="{{ about_section.image.url }}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+  <!-- End About Us Section  -->
+<!--<section class="wrapper">-->
+<!--    <div class="container">-->
+<!--      <div class="owl-carousel owl-theme">-->
+<!--        <div class="item">-->
+<!--          <div class="heading">-->
+<!--            <h5>THE CITY VIEW</h5>-->
+<!--            <h3>A charming view of the city</h3>-->
+<!--          </div>-->
+<!--          <p>Immerse yourself in the sophisticated charm of our city view, where the urban landscape unfolds in a captivating display of modern elegance. From high above the city streets, this panoramic vista showcases the intricate beauty of towering skyscrapers and sprawling cityscapes. As the sun sets, watch as the skyline transforms, bathed in warm hues of gold and orange, creating a breathtaking backdrop that captures the essence of urban sophistication.</p>-->
+<!--          <p>As night falls, the city lights sparkle like stars, offering a tranquil escape from the day's hustle. The shimmering skyline provides a serene view, blending the city's vibrant energy with a peaceful ambiance.</p>-->
+<!--        </div>-->
+<!--        <div class="item">-->
+<!--          <div class="heading">-->
+<!--            <h5>THE CITY VIEW</h5>-->
+<!--            <h3>A charming view of the city</h3>-->
+<!--          </div>-->
+<!--          <p>Immerse yourself in the sophisticated charm of our city view, where the urban landscape unfolds in a captivating display of modern elegance. From high above the city streets, this panoramic vista showcases the intricate beauty of towering skyscrapers and sprawling cityscapes. As the sun sets, watch as the skyline transforms, bathed in warm hues of gold and orange, creating a breathtaking backdrop that captures the essence of urban sophistication.</p>-->
+<!--          <p>As night falls, the city lights sparkle like stars, offering a tranquil escape from the day's hustle. The shimmering skyline provides a serene view, blending the city's vibrant energy with a peaceful ambiance.</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </section>-->
+
+
+<section class="wrapper" style="position: relative; text-align: center; height: 100vh; display: flex; align-items: center; justify-content: center;">
+  <!-- Text Content -->
+  <div class="container" style="position: relative; z-index: 2; color: white;">
+      <div class="heading">
+          <!--<h5 style="color: white; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);">LAST MINUTE!</h5>-->
+          <h2 style="color: white; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);">
+              Welcome to Turag Waterfront Resort, where nature meets elegance.
+              Step into tranquility at our majestic entrance by the riverbank.
+          </h2>
+      </div>
+      <div id="time" class="flex1 mtop" style="position: relative; z-index: 2;"></div>
+  </div>
+</section>
+
+
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>-->
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>-->
+  <!--<script>-->
+  <!--  $('.owl-carousel').owlCarousel({-->
+  <!--    loop: true,-->
+  <!--    margin: 10,-->
+  <!--    nav: true,-->
+  <!--    dots: false,-->
+  <!--    navText: ["<i class='far fa-long-arrow-alt-left'></i>", "<i class='far fa-long-arrow-alt-right'></i>"],-->
+  <!--    responsive: {-->
+  <!--      0: {-->
+  <!--        items: 1-->
+  <!--      },-->
+  <!--      768: {-->
+  <!--        items: 1-->
+  <!--      },-->
+  <!--      1000: {-->
+  <!--        items: 1-->
+  <!--      }-->
+  <!--    }-->
+  <!--  })-->
+  <!--</script>-->
+
+
+  <section class="room wrapper2 top" id="room">
+    <div class="container">
+        <div class="heading">
+            <h5>OUR ROOMS</h5>
+            <h2>Fascinating rooms & suites</h2>
+        </div>
+        <div class="content flex mtop">
+            <div class="left grid2">
+                {% for feature in room_features %}
+                <div class="box">
+                    <i class="{{ feature.icon }}"></i>
+                    <p>{{ feature.description }}</p>
+                    <h3>{{ feature.title }}</h3>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="right">
+                <!-- If you want to keep the image -->
+                <img src="static/image/r.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+  <section class="timer about wrapper">
+    <div class="background"> </div>
+    <div class="container">
+      <div class="heading">
+        <h5>LAST MINUTE!</h5>
+        <h2> <span>Incredible!</span> Are you coming today</h2>
+      </div>
+
+      <div id="time" class="flex1 mtop"> </div>
+    </div>
+  </section>
+  <script src="static/js/jquery.countdown.js" charset="utf-8"></script>
+  <script src="static/js/jquery.countdown.min.js" charset="utf-8"></script>
+  <script type="static/text/javascript">
+    $('#time').countdown('2024/01/01', function(event) {
+      $(this).html(event.strftime(
+        '<div class="clock"><span>%d</span> <p>Days</p></div> ' +
+        '<div class="clock"><span>%H</span> <p>Hours</p></div> ' +
+        '<div class="clock"><span>%M</span> <p>Minutes</p></div> ' +
+        '<div class="clock"><span>%S</span> <p>Seconds</p></div> '
+      ));
+    });
+  </script>
+  <section class="offer mtop" id="services">
+    <div class="container">
+        <div class="heading">
+            <h5>EXCLUSIVE OFFERS</h5>
+            <h3>You can get an exclusive offer</h3>
+        </div>
+
+        <div class="content grid2 mtop">
+            {% for offer in room_offers %}
+            <div class="box flex">
+                <div class="left">
+                    <img src="{{ offer.image.url }}" alt="{{ offer.room_type }}">
+                </div>
+                <div class="right">
+                    <h4>{{ offer.room_type }}</h4>
+                    <div class="rate flex">
+                        <!-- Assuming you have a rating system -->
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <!--<p>{{ offer.short_description }}</p>-->
+                    <p style="
+                      font-size: 1em;
+                      color: #666;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      display: -webkit-box;
+                      -webkit-line-clamp: 3;
+                      -webkit-box-orient: vertical;
+                      max-width: 100%;
+                      margin: 0;
+                      line-height: 1.5;
+                  ">
+                      {{ offer.short_description }}
+                  </p>
+                    <h5>৳ {{ offer.cost }}/night</h5>
+                    <button class="flex1" onclick="window.location.href='{% url 'room_detail' offer.pk %}'">
+                      <span>Check Availability</span>
+                      <i class="fas fa-arrow-circle-right"></i>
+                  </button>
+                  <style>
+                      .flex1 {
+                          cursor: pointer; /* Makes the button appear clickable */
+                      }
+                  </style>
+                  
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+  <section class="area top">
+    <div class="container">
+      <div class="heading">
+        <h5>RESTAURANT</h5>
+        <h3>The area we cover under ecorik</h3>
+      </div>
+
+      <div class="content flex mtop">
+        <div class="left">
+          <img src="static/image/aera.jpg" alt="">
+        </div>
+        <div class="right">
+          <ul>
+            <li>Restaurant </li>
+            <li>Swimming pool </li>
+            <li>Conference room</li>
+          </ul>
+
+          <p>At Ecorik, our restaurant is a haven for food lovers, offering a diverse menu that celebrates both local flavors and international cuisines. Our expert chefs craft each dish with the freshest ingredients, ensuring a delightful culinary experience for every guest. Whether you're craving traditional delicacies or gourmet creations, our restaurant is dedicated to providing a dining experience that satisfies all tastes.</p>
+          <p>Step into our serene and inviting dining space, where the ambiance complements the exquisite food. Whether you're enjoying a romantic dinner, a family gathering, or a casual meal, Ecorik's restaurant offers the perfect setting. With attentive service and a warm atmosphere, every meal becomes a memorable occasion at Ecorik.</p>
+          <button class="flex1">
+            <span>Happy to Be Here</span>
+            <i class="fab fa-angellist"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    $('.owl-carousel').owlCarousel({
+      loop: true,
+      margin: 10,
+      nav: false,
+      dots: false,
+      navText: ["<i class='far fa-long-arrow-alt-left'></i>", "<i class='far fa-long-arrow-alt-right'></i>"],
+      responsive: {
+        0: {
+          items: 1
+        },
+        768: {
+          items: 1
+        },
+        1000: {
+          items: 1
+        }
+      }
+    })
+  </script>
+
+  <!--=========GALLERY===========-->
+<section class="gallary top" id="gallary">
+  <div class="container">
+    <!-- Gallery Heading -->
+    <div class="heading">
+      <h5>GALLERY</h5>
+      <h3>Image Gallery</h3>
+    </div>
+    
+    <!-- Gellery Container -->
+    <div class="gallery-container">
+      {% for image in gallery_images %}
+        <div class="gallery-item">
+          <a href="{{ image.image.url }}" data-lightbox="gallary" data-title="{{ image.alt_text }}">
+            <img src="{{ image.image.url }}" alt="{{ image.alt_text }}">
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<!--=========GALLERY===========-->
+
+  <script>
+    $('.owl-carousel').owlCarousel({
+      loop: true,
+      margin: 0,
+      nav: false,
+      dots: false,
+      autoplay: true,
+      slideTransition: 'linear',
+      autoplayTimeout: 4000,
+      autoplaySpeed: 4000,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        768: {
+          items: 3
+        },
+        1000: {
+          items: 5
+        }
+      }
+    })
+  </script>
+
+  <section class="blog top" id="blog">
+    <div class="container">
+        <div class="heading">
+            <h5>OUR BLOG</h5>
+            <h3>News & articles updates</h3>
+        </div>
+        <div class="content grid mtop">
+            {% for blog in blog_posts %}
+                <div class="box">
+                    <div class="img">
+                        <img src="{{ blog.image.url }}" alt="{{ blog.blog_title }}">
+                        <span>BLOG</span>
+                    </div>
+                    <div class="text">
+                        <div class="flex">
+                            <i class="far fa-user"> <label>Admin</label> </i>
+                            {% comment %} <i class="far fa-comments"> <label>Comment</label> </i> {% endcomment %}
+                        </div>
+                        <h3>{{ blog.blog_title }}</h3>
+                        <p>{{ blog.content|truncatewords:30 }}</p>
+                        {% comment %} <a href="#">Read More <i class='far fa-long-arrow-alt-right'></i> </a> {% endcomment %}
+                        <a href="{% url 'blog_detail' blog.id %}">Read More <i class='far fa-long-arrow-alt-right'></i></a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+  <section class="map-contact top">
+    <div class="container">
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3641.8958286204816!2d90.32207427605863!3d24.10515857506312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755dfb0e3b3d0c3%3A0xdfeeececfa102351!2sTurag%20Waterfront%20Resort!5e0!3m2!1sen!2sbd!4v1723457958251!5m2!1sen!2sbd" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+
+  <footer>
+    <div class="container top">
+      <div class="contact-form" id="contact">
+          <h2>Contact Us</h2>
+          <p>If you have any questions or inquiries, please fill out the form below.</p>
+          <form action="{% url 'index' %}" method="post">
+              {% csrf_token %}
+              <div class="input-row">
+                  <div class="input-group">
+                      {{ form.name.label_tag }}
+                      {{ form.name }}
+                  </div>
+                  <div class="input-group">
+                      {{ form.email.label_tag }}
+                      {{ form.email }}
+                  </div>
+              </div>
+              <div class="input-group">
+                  {{ form.message.label_tag }}
+                  {{ form.message }}
+              </div>
+              <div class="input-group">
+                  <button class="flex1" type="submit">
+                      <span>Send Message</span>
+                      <i class="fas fa-paper-plane"></i>
+                  </button>
+              </div>
+          </form>
+      </div>
+  </div>
+  
+      <div class="content grid  top">
+        <div class="box">
+          <div class="logo">
+            <img src="{{ social_media_info.logo.url }}" alt="">
+          </div>
+
+          <p>{{ social_media_info.description }}</p>
+          <div class="social flex">
+
+            {% if social_media_info.facebook_link %}
+              <a href="{{ social_media_info.facebook_link }}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            {% endif %}
+            {% if social_media_info.instagram_link %}
+                <a href="{{ social_media_info.instagram_link }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                {% endif %}
+                {% if social_media_info.youtube_link %}
+                <a href="{{ social_media_info.youtube_link }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                {% endif %}
+                {% if social_media_info.whatsapp_link %}
+                <a href="{{ social_media_info.whatsapp_link }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                {% endif %}
+                {% if social_media_info.twitter_link %}
+                <a href="{{ social_media_info.twitter_link }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                {% endif %}
+                {% if social_media_info.pinterest_link %}
+                <a href="{{ social_media_info.pinterest_link }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-pinterest"></i>
+                </a>
+                {% endif %}
+                {% if social_media_info.tiktok_link %}
+                <a href="{{ social_media_info.tiktok_link }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                {% endif %}
+          </div>
+        </div>
+          
+        <div class="box">
+          <h2>Quick Links</h2>
+          <ul><strong>
+            <li><i class="fas fa-angle-double-right"></i> <a href="#home">Home</a> </li>
+            <li><i class="fas fa-angle-double-right"></i> <a href="#about">About</a> </li>
+            <li><i class="fas fa-angle-double-right"></i> <a href="#room">Room</a> </li>
+            <li><i class="fas fa-angle-double-right"></i> <a href="#services">Services</a> </li>
+            <li><i class="fas fa-angle-double-right"></i> <a href="#gallary">Gallary</a> </li>
+            <li><i class="fas fa-angle-double-right"></i> <a href="#blog">Blog</a> </li>
+            <li><i class="fas fa-angle-double-right"></i> <a href="#contact">Contact</a> </li>
+          </strong>
+          </ul>
+        </div>
+        <div class="box">
+          <h2>Services</h2>
+          <ul>
+            <li><i class="fas fa-angle-double-right"></i>Restaurant</li>
+            <li><i class="fas fa-angle-double-right"></i>Swimming Pool</li>
+            <li><i class="fas fa-angle-double-right"></i>Wellness & Spa</li>
+            <li><i class="fas fa-angle-double-right"></i>Conference Room</li>
+            <li><i class="fas fa-angle-double-right"></i>Events</li>
+            <li><i class="fas fa-angle-double-right"></i>Adult Room</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h2>Find Us</h2>
+          <div class="icon flex">
+            <div class="i">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="text">
+              <h3>Address</h3>
+              <p>{{ social_media_info.address }}</p>
+            </div>
+          </div>
+          <div class="icon flex">
+            <div class="i">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="text">
+              <h3>Phone</h3>
+              <p>{{ social_media_info.phone_number }}</p>
+            </div>
+          </div>
+          <div class="icon flex">
+            <div class="i">
+              <i class="far fa-envelope"></i>
+            </div>
+            <div class="text">
+              <h3>Email</h3>
+              {% comment %} <p>turagwaterfrontresort5541@gmail.com</p> {% endcomment %}
+              <p>{{ social_media_info.email }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

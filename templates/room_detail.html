@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <title>Turag WaterFont Resort</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  <!-- Include Lightbox2 JS only once -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+  
+  <!-- Include Lightbox2 CSS only once -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+
+<body>
+    
+
+    
+  <section class="head">
+    <div class="container flex1">
+      <div class="scoial">
+          {% if social_media_info.facebook_link %}
+          <a href="{{ social_media_info.facebook_link }}" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          {% endif %}
+          {% if social_media_info.instagram_link %}
+            <a href="{{ social_media_info.instagram_link }}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-instagram"></i>
+            </a>
+            {% endif %}
+            {% if social_media_info.youtube_link %}
+            <a href="{{ social_media_info.youtube_link }}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-youtube"></i>
+            </a>
+            {% endif %}
+            {% if social_media_info.whatsapp_link %}
+            <a href="{{ social_media_info.whatsapp_link }}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            {% endif %}
+            {% if social_media_info.twitter_link %}
+            <a href="{{ social_media_info.twitter_link }}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-twitter"></i>
+            </a>
+            {% endif %}
+            {% if social_media_info.pinterest_link %}
+            <a href="{{ social_media_info.pinterest_link }}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-pinterest"></i>
+            </a>
+            {% endif %}
+            {% if social_media_info.tiktok_link %}
+            <a href="{{ social_media_info.tiktok_link }}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            {% endif %}
+
+
+      </div>
+      <div class="logo">
+        <img src="{{ social_media_info.logo.url }}" alt="">
+      </div>
+      <div class="address">
+        <i class="fas fa-map-marker-alt"></i>
+        {% comment %} <span>Mouchak, Gazipur, Dhaka</span> {% endcomment %}
+        <span>{{ social_media_info.address }}</span>
+      </div>
+    </div>
+  </section>
+
+
+  <header class="header">
+    <div class="container">
+      <nav class="navbar flex1">
+        <div class="sticky_logo logo">
+            {% comment %} <img src="{% static 'image/turag-1.png' %}" alt="Turag WaterFont"> {% endcomment %}
+            <img src="{{ social_media_info.logo.url }}" alt="">
+        </div>
+
+        <ul class="nav-menu">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'services' %}">Room</a></li>
+          <li><a href="{% url 'services' %}">Services</a></li>
+          <li><a href="{% url 'gallery' %}">Gallery</a></li>
+          <li><a href="{% url 'blog_list' %}">Blog</a></li>
+          <!--<li> <a href="{% url 'index' %}#home">contact</a> </li>-->
+          <li><a href="https://turagwaterfrontresort.netlify.app">Online Booking</a></li>  
+      </ul>
+
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+
+        <div class="head_contact">
+          <i class="fas fa-phone-volume"></i>
+          <span>{{ social_media_info.phone_number|slice:":14" }}</span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobliemmenu);
+
+    function mobliemmenu() {
+      hamburger.classList.toggle("active");
+      navMenu.classList.toggle("active");
+    }
+
+    window.addEventListener("scroll", function() {
+      var header = document.querySelector("header");
+      header.classList.toggle("sticky", window.scrollY > 0)
+    })
+  </script><br><br>
+
+
+        <section class="room-details">
+            <div class="container flex-container">
+                <div class="room-image">
+                    <a href="{{ room.image.url }}" data-lightbox="room-image" data-title="{{ room.room_type }}">
+                        <img src="{{ room.image.url }}" alt="{{ room.room_type }}">
+                    </a>
+                    <a href="javascript:history.back()" class="go-back-button">
+                        <i class="fas fa-arrow-left"></i> Go Back
+                    </a>
+                    <div class="room-info">
+                        <h4>{{ room.room_type }} : {{ room.room_number }}</h4>
+                        <p class="description">{{ room.short_description }}</p>
+                        <p class="cost">Cost per night: ৳ {{ room.cost }}</p>
+                    </div>
+                    <!-- Facilities section -->
+                    <div class="room-facilities">
+                        <h4>Facilities:</h4>
+                        <div class="facility-row">
+                            {% for facility in room.facilities.all %}
+                                <div class="facility-item">
+                                    <i class="fas fa-check-circle"></i> {{ facility.facility_name }}
+                                </div>
+                                {% if forloop.counter|divisibleby:2 and not forloop.last %}
+                                    </div><div class="facility-row">
+                                {% endif %}
+                            {% empty %}
+                                <p>No facilities available.</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="booking-form">
+                    <h3>Book This Room</h3>
+                    <form method="post">
+                        <p>Discover the ultimate comfort and relaxation in our luxurious room. Book now and experience a stay like no other.</p>
+                        
+                        <a href="https://turagwaterfrontresort.netlify.app/" style="
+                            display: block;
+                            width: 100%;
+                            padding: 10px;
+                            background-color: #CC8C18;
+                            color: #fff;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            font-size: 16px;
+                            text-align: center;
+                            text-decoration: none;
+                            box-sizing: border-box;
+                        ">Go To Online Booking</a>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+
+
+<!-- Section to display all rooms -->
+<section class="all-rooms">
+    <h2>Other Rooms</h2>
+    <div class="slider-container">
+        <div class="room-slider">
+            {% for room in all_rooms %}
+                <div class="room-item">
+                    <a href="{% url 'room_detail' room.id %}">
+                        <img src="{{ room.image.url }}" alt="{{ room.room_type }}">
+                        <div class="room-details">
+                            <h4>{{ room.room_type }} : {{ room.room_number }}</h4>
+                            <p class="cost">Cost per night: ৳ {{ room.cost }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% empty %}
+                <p>No other rooms available.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+    
+
+
+  <footer>
+    <div class="container top">
+    
+      <div class="content grid  top">
+        <div class="box">
+          <div class="logo">
+            <img src="{{ social_media_info.logo.url }}" alt="">
+          </div>
+
+          <p>{{ social_media_info.description }}</p>
+          <div class="social flex">
+
+            {% if social_media_info.facebook_link %}
+              <a href="{{ social_media_info.facebook_link }}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            {% endif %}
+            {% if social_media_info.instagram_link %}
+                <a href="{{ social_media_info.instagram_link }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                {% endif %}
+                {% if social_media_info.youtube_link %}
+                <a href="{{ social_media_info.youtube_link }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                {% endif %}
+                {% if social_media_info.whatsapp_link %}
+                <a href="{{ social_media_info.whatsapp_link }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                {% endif %}
+                {% if social_media_info.twitter_link %}
+                <a href="{{ social_media_info.twitter_link }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                {% endif %}
+                {% if social_media_info.pinterest_link %}
+                <a href="{{ social_media_info.pinterest_link }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-pinterest"></i>
+                </a>
+                {% endif %}
+                {% if social_media_info.tiktok_link %}
+                <a href="{{ social_media_info.tiktok_link }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                {% endif %}
+          </div>
+        </div>
+           
+
+
+
+
+
+        <div class="box">
+          <h2>Quick Links</h2>
+  
+
+          <ul>
+    <strong>
+        <li><i class="fas fa-angle-double-right"></i></i> <a href="{% url 'index' %}">Home</a></li>
+        <li><i class="fas fa-angle-double-right"></i></i> <a href="{% url 'about' %}">About</a></li>
+        <li><i class="fas fa-angle-double-right"></i></i> <a href="{% url 'services' %}">Room</a></li>
+        <li><i class="fas fa-angle-double-right"></i></i> <a href="{% url 'services' %}">Services</a></li>
+        <li><i class="fas fa-angle-double-right"></i></i> <a href="{% url 'gallery' %}">Gallery</a></li>
+        <li><i class="fas fa-angle-double-right"></i></i> <a href="{% url 'blog_list' %}">Blog</a></li>
+        <li><i class="fas fa-angle-double-right"></i></i> <a href="{% url 'index' %}">Contact</a></li>
+    </strong>
+</ul>
+          
+
+
+        </div>
+        
+        <div class="box">
+          <h2>Services</h2>
+          <ul>
+            <li><i class="fas fa-angle-double-right"></i>Restaurant</li>
+            <li><i class="fas fa-angle-double-right"></i>Swimming Pool</li>
+            <li><i class="fas fa-angle-double-right"></i>Wellness & Spa</li>
+            <li><i class="fas fa-angle-double-right"></i>Conference Room</li>
+            <li><i class="fas fa-angle-double-right"></i>Events</li>
+            <li><i class="fas fa-angle-double-right"></i>Adult Room</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h2>Find Us</h2>
+          <div class="icon flex">
+            <div class="i">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="text">
+              <h3>Address</h3>
+              <p>{{ social_media_info.address }}</p>
+            </div>
+          </div>
+          <div class="icon flex">
+            <div class="i">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="text">
+              <h3>Phone</h3>
+              <p>{{ social_media_info.phone_number }}</p>
+            </div>
+          </div>
+          <div class="icon flex">
+            <div class="i">
+              <i class="far fa-envelope"></i>
+            </div>
+            <div class="text">
+              <h3>Email</h3>
+              {% comment %} <p>turagwaterfrontresort5541@gmail.com</p> {% endcomment %}
+              <p>{{ social_media_info.email }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+</body>
+
+</html>
+
