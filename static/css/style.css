@@ -232,22 +232,17 @@ header.sticky ul li a {
 }
 
 .home {
-  /* background-image: url("../image/home.png"); */
-  /* background-image: url("../image/top_video_1.gif"); */
   /* background-image: url("../image/top_video.gif"); */
-  /* height: 100vh;
+  height: 100vh;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  text-align: center; */
-  
-
-
-  position: relative; /* This is needed for positioning the container above the video */
-  height: 100vh;
   text-align: center;
-  overflow: hidden; /* Prevents overflow if the video size exceeds the container */
+  
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .background-video {
