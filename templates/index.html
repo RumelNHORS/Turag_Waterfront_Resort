@@ -577,11 +577,19 @@
             <div class="i">
               <i class="far fa-envelope"></i>
             </div>
+            {% comment %} <div class="text">
+              <h3>Email</h3>
+              <p>{{ social_media_info.email }}</p>
+            </div> {% endcomment %}
             <div class="text">
               <h3>Email</h3>
-              {% comment %} <p>turagwaterfrontresort5541@gmail.com</p> {% endcomment %}
-              <p>{{ social_media_info.email }}</p>
-            </div>
+              <p>
+                  <a href="mailto:{{ social_media_info.email }}" style="color: inherit; text-decoration: none;">
+                      {{ social_media_info.email }}
+                  </a>
+              </p>
+          </div>
+
           </div>
         </div>
       </div>
