@@ -99,11 +99,24 @@
           <span class="bar"></span>
         </div>
 
+        {% comment %} <div class="head_contact">
+          <i class="fas fa-phone-volume"></i>
+          <span>{{ social_media_info.phone_number|slice:":14" }}</span>
+        </div> {% endcomment %}
+        {% load custom_filters %}
         <div class="head_contact">
           <i class="fas fa-phone-volume"></i>
-          <!--<span>{{ social_media_info.phone_number }}</span>-->
-          <span>{{ social_media_info.phone_number|slice:":14" }}</span>
-        </div>
+          {% with social_media_info.phone_number|split_phone_numbers as phone_numbers %}
+              {% if phone_numbers %}
+                  <a href="tel:{{ phone_numbers.0|trim }}" style="color: white;">
+                    <span>{{ phone_numbers.0|trim }}</span>
+                  </a>
+              {% else %}
+                  <span>No phone number available</span>
+              {% endif %}
+          {% endwith %}
+      </div>
+
       </nav>
     </div>
   </header>
@@ -139,34 +152,6 @@
       <h1>{{ content.heading }}</h1>
       <p>{{ content.subheading }}</p>
 
-      <!--<div class="content grid">-->
-      <!--  <div class="box">-->
-      <!--    <span>ARRIVAL DATE </span> <br>-->
-      <!--    <input type="date" placeholder="29/20/2021">-->
-      <!--  </div>-->
-      <!--  <div class="box">-->
-      <!--    <span>DEPARTURE DATE </span> <br>-->
-      <!--    <input type="date" placeholder="29/20/2021">-->
-      <!--  </div>-->
-      <!--  <div class="box">-->
-      <!--    <span>ADULTS</span> <br>-->
-      <!--    <input type="number" placeholder="01">-->
-      <!--  </div>-->
-      <!--  <div class="box">-->
-      <!--    <span>CHILDREN </span> <br>-->
-      <!--    <input type="number" placeholder="01">-->
-      <!--  </div>-->
-      <!--  <div class="box">-->
-      <!--    <a href="{% url 'services' %}" style="text-decoration: none; display: inline-flex; align-items: center; background-color: #CC8C18; color: white; border-radius: 4px; cursor: pointer;">-->
-      <!--      <button type="button" style="background: none; border: none; color: inherit; font: inherit; display: flex; align-items: center; cursor: pointer;">-->
-      <!--          <span>Check Availability</span>-->
-      <!--          <i class="fas fa-arrow-circle-right" style="margin-left: 8px;"></i>-->
-      <!--      </button>-->
-      <!--  </a>-->
-        
-      <!--  </a>-->
-      <!--  </div>-->
-      <!--</div>-->
     </div>
   </section>
 
@@ -192,33 +177,6 @@
 </section>
 
 
-
-
-  <!-- End About Us Section  -->
-<!--<section class="wrapper">-->
-<!--    <div class="container">-->
-<!--      <div class="owl-carousel owl-theme">-->
-<!--        <div class="item">-->
-<!--          <div class="heading">-->
-<!--            <h5>THE CITY VIEW</h5>-->
-<!--            <h3>A charming view of the city</h3>-->
-<!--          </div>-->
-<!--          <p>Immerse yourself in the sophisticated charm of our city view, where the urban landscape unfolds in a captivating display of modern elegance. From high above the city streets, this panoramic vista showcases the intricate beauty of towering skyscrapers and sprawling cityscapes. As the sun sets, watch as the skyline transforms, bathed in warm hues of gold and orange, creating a breathtaking backdrop that captures the essence of urban sophistication.</p>-->
-<!--          <p>As night falls, the city lights sparkle like stars, offering a tranquil escape from the day's hustle. The shimmering skyline provides a serene view, blending the city's vibrant energy with a peaceful ambiance.</p>-->
-<!--        </div>-->
-<!--        <div class="item">-->
-<!--          <div class="heading">-->
-<!--            <h5>THE CITY VIEW</h5>-->
-<!--            <h3>A charming view of the city</h3>-->
-<!--          </div>-->
-<!--          <p>Immerse yourself in the sophisticated charm of our city view, where the urban landscape unfolds in a captivating display of modern elegance. From high above the city streets, this panoramic vista showcases the intricate beauty of towering skyscrapers and sprawling cityscapes. As the sun sets, watch as the skyline transforms, bathed in warm hues of gold and orange, creating a breathtaking backdrop that captures the essence of urban sophistication.</p>-->
-<!--          <p>As night falls, the city lights sparkle like stars, offering a tranquil escape from the day's hustle. The shimmering skyline provides a serene view, blending the city's vibrant energy with a peaceful ambiance.</p>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </section>-->
-
-
 <section class="wrapper" style="position: relative; text-align: center; height: 100vh; display: flex; align-items: center; justify-content: center;">
   <!-- Text Content -->
   <div class="container" style="position: relative; z-index: 2; color: white;">
@@ -232,30 +190,6 @@
       <div id="time" class="flex1 mtop" style="position: relative; z-index: 2;"></div>
   </div>
 </section>
-
-
-  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>-->
-  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>-->
-  <!--<script>-->
-  <!--  $('.owl-carousel').owlCarousel({-->
-  <!--    loop: true,-->
-  <!--    margin: 10,-->
-  <!--    nav: true,-->
-  <!--    dots: false,-->
-  <!--    navText: ["<i class='far fa-long-arrow-alt-left'></i>", "<i class='far fa-long-arrow-alt-right'></i>"],-->
-  <!--    responsive: {-->
-  <!--      0: {-->
-  <!--        items: 1-->
-  <!--      },-->
-  <!--      768: {-->
-  <!--        items: 1-->
-  <!--      },-->
-  <!--      1000: {-->
-  <!--        items: 1-->
-  <!--      }-->
-  <!--    }-->
-  <!--  })-->
-  <!--</script>-->
 
 
   <section class="room wrapper2 top" id="room">
@@ -619,10 +553,25 @@
             <div class="i">
               <i class="fas fa-phone"></i>
             </div>
-            <div class="text">
+            {% comment %} <div class="text">
               <h3>Phone</h3>
               <p>{{ social_media_info.phone_number }}</p>
-            </div>
+            </div> {% endcomment %}
+            
+            {% load custom_filters %}
+            <div class="text">
+              <h3>Phone</h3>
+              <p>
+                {% with social_media_info.phone_number|split_phone_numbers as phone_numbers %}
+                  {% for phone in phone_numbers %}
+                    <a href="tel:{{ phone|trim }}" style="color: white;">
+                      {{ phone|trim }}
+                    </a><br> 
+                  {% endfor %}
+                {% endwith %}
+              </p>
+          </div>
+
           </div>
           <div class="icon flex">
             <div class="i">

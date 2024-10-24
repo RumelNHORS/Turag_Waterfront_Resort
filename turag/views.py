@@ -7,7 +7,6 @@ from django.views import View
 
 
 def index(request):
-
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -16,6 +15,7 @@ def index(request):
     else:
         form = ContactForm()
 
+    # Collect data for the template
     gallery_images = GalleryImage.objects.all()
     about_section = AboutSection.objects.first()
     carousel_items = CarouselItem.objects.all()
@@ -24,8 +24,8 @@ def index(request):
     blog_posts = Blog.objects.all().order_by('-created_at')
     social_media_info = ResortInfo.objects.first()
     content = HomeContent.objects.first()
-    
-    
+
+    # Render the template with the collected data
     return render(request, 'index.html', {
         'form': form,
         'gallery_images': gallery_images,
