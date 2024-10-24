@@ -162,10 +162,10 @@ header.sticky ul li a {
   .logo {
     display: none;
   }
-
+  
   /*------------head------------*/
   header.sticky {
-    height: 8vh;
+    height: 11vh;
   }
 
   header.sticky .nav-menu {
@@ -223,7 +223,16 @@ header.sticky ul li a {
     transform: translateY(-8px) rotate(-45deg);
   }
 }
-
+@media only screen and (max-width:1024px) {
+  header.sticky {
+    height: 15vh;
+  }
+}
+@media only screen and (min-width:1025px) {
+  header.sticky {
+    height: 12vh;
+  }
+}
 /*------------home------------*/
 .grid {
   display: grid;
@@ -1115,7 +1124,7 @@ footer .content {
 
 @media only screen and (max-width:512px) {
   .header.sticky {
-    height: 10vh;
+    height: 12vh;
   }
 
   .header.sticky .sticky_logo {
