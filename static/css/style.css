@@ -1203,6 +1203,9 @@ footer .content {
   .offer2.wrapper {
     height: 170vh;
   }
+  .footer_email{
+    font-size: 13px;
+  }
 }
 
 
@@ -1766,7 +1769,9 @@ footer .content {
 
 
 
-
+footer_email{
+  font-size: 15px;
+}
 .social a i {
   color: #CC8C18; /* Set the icon color */
   background-color: #FAF3E7; /* Set the background color */

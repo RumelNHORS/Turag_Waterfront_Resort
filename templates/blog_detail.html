@@ -99,10 +99,20 @@
             <span class="bar"></span>
             <span class="bar"></span>
           </div>
-          <div class="head_contact">
-            <i class="fas fa-phone-volume"></i>
-            <span>{{ social_media_info.phone_number|slice:":14" }}</span>
-          </div>
+
+          {% load custom_filters %}
+        <div class="head_contact">
+          <i class="fas fa-phone-volume"></i>
+          {% with social_media_info.phone_number|split_phone_numbers as phone_numbers %}
+              {% if phone_numbers %}
+                  <a href="tel:{{ phone_numbers.0|trim }}" style="color: white;">
+                    <span>{{ phone_numbers.0|trim }}</span>
+                  </a>
+              {% else %}
+                  <span>No phone number available</span>
+              {% endif %}
+          {% endwith %}
+
         </nav>
       </div>
     </header>
@@ -174,116 +184,128 @@
 
   <!-- Footer Section -->
   <footer>
-    <div class="container top">
-      <div class="content grid  top">
-        <div class="box">
-          <div class="logo">
-            <img src="{{ social_media_info.logo.url }}" alt="">
-          </div>
-          <p>{{ social_media_info.description }}</p>
-          <div class="social flex">
-
-            {% if social_media_info.facebook_link %}
-              <a href="{{ social_media_info.facebook_link }}" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-            {% endif %}
-            {% if social_media_info.instagram_link %}
-                <a href="{{ social_media_info.instagram_link }}" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                {% endif %}
-                {% if social_media_info.youtube_link %}
-                <a href="{{ social_media_info.youtube_link }}" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                {% endif %}
-                {% if social_media_info.whatsapp_link %}
-                <a href="{{ social_media_info.whatsapp_link }}" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                {% endif %}
-                {% if social_media_info.twitter_link %}
-                <a href="{{ social_media_info.twitter_link }}" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                {% endif %}
-                {% if social_media_info.pinterest_link %}
-                <a href="{{ social_media_info.pinterest_link }}" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-pinterest"></i>
-                </a>
-                {% endif %}
-                {% if social_media_info.tiktok_link %}
-                <a href="{{ social_media_info.tiktok_link }}" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-                {% endif %}
-          </div>
+    <div class="content grid  top">
+      <div class="box">
+        <div class="logo">
+          <img src="{{ social_media_info.logo.url }}" alt="">
         </div>
-           
 
+        <p>{{ social_media_info.description }}</p>
+        <div class="social flex">
 
-
-
-
-        <div class="box">
-          <h2>Quick Links</h2>
-
-        <ul>
-        <strong>
-          <li><i class="fas fa-angle-double-right"></i></i> <a href="{% url 'index' %}">Home</a></li>
-          <li><i class="fas fa-angle-double-right"></i></i> <a href="{% url 'about' %}">About</a></li>
-          <li><i class="fas fa-angle-double-right"></i></i> <a href="{% url 'services' %}">Room</a></li>
-          <li><i class="fas fa-angle-double-right"></i></i> <a href="{% url 'services' %}">Services</a></li>
-          <li><i class="fas fa-angle-double-right"></i></i> <a href="{% url 'gallery' %}">Gallery</a></li>
-          <li><i class="fas fa-angle-double-right"></i></i> <a href="{% url 'blog_list' %}">Blog</a></li>
-          <li><i class="fas fa-angle-double-right"></i></i> <a href="{% url 'index' %}">Contact</a></li>
+          {% if social_media_info.facebook_link %}
+            <a href="{{ social_media_info.facebook_link }}" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+          {% endif %}
+          {% if social_media_info.instagram_link %}
+              <a href="{{ social_media_info.instagram_link }}" target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-instagram"></i>
+              </a>
+              {% endif %}
+              {% if social_media_info.youtube_link %}
+              <a href="{{ social_media_info.youtube_link }}" target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-youtube"></i>
+              </a>
+              {% endif %}
+              {% if social_media_info.whatsapp_link %}
+              <a href="{{ social_media_info.whatsapp_link }}" target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-whatsapp"></i>
+              </a>
+              {% endif %}
+              {% if social_media_info.twitter_link %}
+              <a href="{{ social_media_info.twitter_link }}" target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-twitter"></i>
+              </a>
+              {% endif %}
+              {% if social_media_info.pinterest_link %}
+              <a href="{{ social_media_info.pinterest_link }}" target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-pinterest"></i>
+              </a>
+              {% endif %}
+              {% if social_media_info.tiktok_link %}
+              <a href="{{ social_media_info.tiktok_link }}" target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-tiktok"></i>
+              </a>
+              {% endif %}
+        </div>
+      </div>
+      <div class="box">
+        <h2 style="color: white;">Quick Links</h2>
+        <ul><strong>
+          <li><i class="fas fa-angle-double-right"></i> <a href="#home">Home</a> </li>
+          <li><i class="fas fa-angle-double-right"></i> <a href="#about">About</a> </li>
+          <li><i class="fas fa-angle-double-right"></i> <a href="#room">Room</a> </li>
+          <li><i class="fas fa-angle-double-right"></i> <a href="#services">Services</a> </li>
+          <li><i class="fas fa-angle-double-right"></i> <a href="#gallary">Gallary</a> </li>
+          <li><i class="fas fa-angle-double-right"></i> <a href="#blog">Blog</a> </li>
+          <li><i class="fas fa-angle-double-right"></i> <a href="#contact">Contact</a> </li>
         </strong>
         </ul>
+      </div>
+      <div class="box">
+        <h2 style="color: white;">Services</h2>
+        <ul>
+          <li><i class="fas fa-angle-double-right"></i>Restaurant</li>
+          <li><i class="fas fa-angle-double-right"></i>Swimming Pool</li>
+          <li><i class="fas fa-angle-double-right"></i>Wellness & Spa</li>
+          <li><i class="fas fa-angle-double-right"></i>Conference Room</li>
+          <li><i class="fas fa-angle-double-right"></i>Events</li>
+          <li><i class="fas fa-angle-double-right"></i>Adult Room</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h2>Find Us</h2>
+        <div class="icon flex">
+          <div class="i">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="text">
+            <h3>Address</h3>
+            <p>{{ social_media_info.address }}</p>
+          </div>
         </div>
-        
-        <div class="box">
-          <h2>Services</h2>
-          <ul>
-            <li><i class="fas fa-angle-double-right"></i>Restaurant</li>
-            <li><i class="fas fa-angle-double-right"></i>Swimming Pool</li>
-            <li><i class="fas fa-angle-double-right"></i>Wellness & Spa</li>
-            <li><i class="fas fa-angle-double-right"></i>Conference Room</li>
-            <li><i class="fas fa-angle-double-right"></i>Events</li>
-            <li><i class="fas fa-angle-double-right"></i>Adult Room</li>
-          </ul>
+        <div class="icon flex">
+          <div class="i">
+            <i class="fas fa-phone"></i>
+          </div>
+          {% comment %} <div class="text">
+            <h3>Phone</h3>
+            <p>{{ social_media_info.phone_number }}</p>
+          </div> {% endcomment %}
+          
+          {% load custom_filters %}
+          <div class="text">
+            <h3>Phone</h3>
+            <p>
+              {% with social_media_info.phone_number|split_phone_numbers as phone_numbers %}
+                {% for phone in phone_numbers %}
+                  <a href="tel:{{ phone|trim }}" style="color: white;">
+                    {{ phone|trim }}
+                  </a><br> 
+                {% endfor %}
+              {% endwith %}
+            </p>
         </div>
 
-        <div class="box">
-          <h2>Find Us</h2>
-          <div class="icon flex">
-            <div class="i">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <div class="text">
-              <h3>Address</h3>
-              <p>{{ social_media_info.address }}</p>
-            </div>
+        </div>
+        <div class="icon flex">
+          <div class="i">
+            <i class="far fa-envelope"></i>
           </div>
-          <div class="icon flex">
-            <div class="i">
-              <i class="fas fa-phone"></i>
-            </div>
-            <div class="text">
-              <h3>Phone</h3>
-              <p>{{ social_media_info.phone_number }}</p>
-            </div>
-          </div>
-          <div class="icon flex">
-            <div class="i">
-              <i class="far fa-envelope"></i>
-            </div>
-            <div class="text">
-              <h3>Email</h3>
-              {% comment %} <p>turagwaterfrontresort5541@gmail.com</p> {% endcomment %}
-              <p>{{ social_media_info.email }}</p>
-            </div>
-          </div>
+          {% comment %} <div class="text">
+            <h3>Email</h3>
+            <p>{{ social_media_info.email }}</p>
+          </div> {% endcomment %}
+          <div class="text">
+            <h3>Email</h3>
+            <p>
+                <a class="footer_email" href="mailto:{{ social_media_info.email }}" style="color: inherit; text-decoration: none;">
+                    {{ social_media_info.email }}
+                </a>
+            </p>
+        </div>
+
         </div>
       </div>
     </div>
