@@ -25,7 +25,7 @@ admin.site.register(AboutSection)
 admin.site.register(CarouselItem)
 admin.site.register(RoomFeature)
 admin.site.register(RoomOffer)
-admin.site.register(Blog)
+# admin.site.register(Blog)
 admin.site.register(RoomFacility)
 admin.site.register(Booking)
 admin.site.register(Contact)
@@ -56,11 +56,11 @@ class BlogMetaAdmin(admin.ModelAdmin):
 #         model = CarouselItem
 #         fields = '__all__'
 
-# class BlogAdminForm(forms.ModelForm):
-#     content = forms.CharField(widget=CKEditorUploadingWidget())
-#     class Meta:
-#         model = Blog
-#         fields = '__all__'
+class BlogAdminForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorUploadingWidget())
+    class Meta:
+        model = Blog
+        fields = '__all__'
 
 # class RoomFeatureAdminForm(forms.ModelForm):
 #     class Meta:
@@ -105,9 +105,9 @@ class BlogMetaAdmin(admin.ModelAdmin):
 # class CarouselItemAdmin(admin.ModelAdmin):
 #     form = CarouselItemAdminForm
 
-# @admin.register(Blog)
-# class BlogAdmin(admin.ModelAdmin):
-#     form = BlogAdminForm
+@admin.register(Blog)
+class BlogAdmin(admin.ModelAdmin):
+    form = BlogAdminForm
 
 # @admin.register(RoomFeature)
 # class RoomFeatureAdmin(admin.ModelAdmin):

@@ -181,7 +181,7 @@ class HomeMeta(models.Model):
 # Models for SEO for the Blog page 
 class BlogMeta(models.Model):
     title = models.CharField(max_length=200)
-    keywords = models.TextField()
+    keywords = models.CharField(max_length=250, null=True, blank=True)
     description = models.TextField()
     created_at = models.DateTimeField(default=now, editable=False)
     updated_at = models.DateTimeField(default=now)

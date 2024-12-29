@@ -1,4 +1,5 @@
 from django import template
+from django.utils.html import strip_tags as django_strip_tags
 
 register = template.Library()
 
@@ -15,3 +16,7 @@ def split_phone_numbers(phone_numbers):
 def trim(value):
     """Trims whitespace from the beginning and end of a string."""
     return value.strip() if isinstance(value, str) else value
+
+@register.filter
+def strip_tags(value):
+    return django_strip_tags(value)

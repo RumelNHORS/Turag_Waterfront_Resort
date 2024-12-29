@@ -160,7 +160,7 @@
           </figure>
           
           <div class="blog-content">
-            {{ blog_post.content|linebreaks }}
+            {{ blog_post.content | safe }}
           </div>
           {% comment %} <a href="{% url 'index' %}" class="btn-back">Back to Blog</a> {% endcomment %}
 
