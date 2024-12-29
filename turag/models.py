@@ -161,6 +161,10 @@ class ServiceMeta(models.Model):
     def __str__(self):
         return self.title
     
+    class Meta:
+        verbose_name = "Service SEO"
+        verbose_name_plural = "Service SEO"
+    
 
 # Models for SEO for the Home page
 class HomeMeta(models.Model):
@@ -176,6 +180,10 @@ class HomeMeta(models.Model):
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        verbose_name = "Home SEO"
+        verbose_name_plural = "Home SEO"
 
 
 # Models for SEO for the Blog page 
@@ -192,4 +200,8 @@ class BlogMeta(models.Model):
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        verbose_name = "Blog SEO"
+        verbose_name_plural = "Blog SEO"
 
