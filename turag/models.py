@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.timezone import now
 
 
 
@@ -159,4 +160,20 @@ class ServiceMeta(models.Model):
 
     def __str__(self):
         return self.title
+    
+
+class HomeMeta(models.Model):
+    title = models.CharField(max_length=200)
+    keywords = models.CharField(max_length=250, null=True, blank=True)
+    description = models.TextField()
+    created_at = models.DateTimeField(default=now, editable=False)
+    updated_at = models.DateTimeField(default=now)
+
+    def save(self, *args, **kwargs):
+        self.updated_at = now()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
     

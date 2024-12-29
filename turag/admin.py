@@ -15,6 +15,7 @@ from .models import (
     ResortInfo,
     HomeContent,
     ServiceMeta,
+    HomeMeta,
 )
 
 
@@ -30,6 +31,7 @@ admin.site.register(Contact)
 admin.site.register(ResortInfo)
 admin.site.register(HomeContent)
 admin.site.register(ServiceMeta)
+admin.site.register(HomeMeta)
 
 
 

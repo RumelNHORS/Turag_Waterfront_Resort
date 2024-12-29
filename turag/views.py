@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView
-from .models import GalleryImage, AboutSection, CarouselItem, RoomFeature, RoomOffer, Blog, ResortInfo, HomeContent, ServiceMeta
+from .models import GalleryImage, AboutSection, CarouselItem, RoomFeature, RoomOffer, Blog, ResortInfo, HomeContent, ServiceMeta, HomeMeta
 from .forms import ContactForm, BookingForm
 from django.views import View
 
@@ -14,6 +14,9 @@ def index(request):
             return redirect('index')
     else:
         form = ContactForm()
+
+    # Fetch the meta data for the home page
+    meta_data = HomeMeta.objects.first()    
 
     # Collect data for the template
     gallery_images = GalleryImage.objects.all()
@@ -36,6 +39,11 @@ def index(request):
         'blog_posts': blog_posts,
         'social_media_info': social_media_info,
         'content': content,
+
+        'meta_title': meta_data.title if meta_data else 'Default Title',
+        'meta_keywords': meta_data.keywords if meta_data else 'Default Keywords',
+        'meta_description': meta_data.description if meta_data else 'Default Description',
+
     })
 
 
