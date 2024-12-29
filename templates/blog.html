@@ -4,8 +4,14 @@
 <html lang="en" dir="ltr">
 
 <head>
-    <title>Hotel Booking Website</title>
+    <title>Hotel Booking Website | {{ meta_title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Meta Tags -->
+    <meta name="title" content="{{ meta_title }}">
+    <meta name="keywords" content="{{ meta_keywords }}">
+    <meta name="description" content="{{ meta_description }}">
+    <meta property="og:title" content="{{ meta_title }}">
+
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
   

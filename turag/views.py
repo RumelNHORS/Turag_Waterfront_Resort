@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView
-from .models import GalleryImage, AboutSection, CarouselItem, RoomFeature, RoomOffer, Blog, ResortInfo, HomeContent, ServiceMeta, HomeMeta
+from .models import GalleryImage, AboutSection, CarouselItem, RoomFeature, RoomOffer, Blog, ResortInfo, HomeContent, ServiceMeta, HomeMeta, BlogMeta
 from .forms import ContactForm, BookingForm
 from django.views import View
 
@@ -98,10 +98,18 @@ def gallery(request):
 
 def blog(request):
     blog_posts = Blog.objects.all().order_by('-created_at')
-    social_media_info = ResortInfo.objects.first() 
+    social_media_info = ResortInfo.objects.first()
+    # Fetch the meta data for the blog page
+    meta_data = BlogMeta.objects.first()
+
     return render(request, 'blog.html', {
         'blog_posts': blog_posts,
         'social_media_info': social_media_info,
+
+        # Pass the meta data to the template
+        'meta_title': meta_data.title if meta_data else 'Default Title',
+        'meta_keywords': meta_data.keywords if meta_data else 'Default Keywords',
+        'meta_description': meta_data.description if meta_data else 'Default Description',
     })
 
 
@@ -142,6 +150,13 @@ class BlogDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['other_blogs'] = Blog.objects.exclude(id=self.object.id)[:5]
         context['social_media_info'] = ResortInfo.objects.first() 
+
+        # Fetch dynamic meta tags for the blog detail page
+        meta_data = BlogMeta.objects.first()
+        context['meta_title'] = meta_data.title if meta_data else 'Default Title'
+        context['meta_keywords'] = meta_data.keywords if meta_data else 'Default Keywords'
+        context['meta_description'] = meta_data.description if meta_data else 'Default Description'
+
         return context
     
 

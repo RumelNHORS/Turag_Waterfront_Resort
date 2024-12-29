@@ -162,6 +162,7 @@ class ServiceMeta(models.Model):
         return self.title
     
 
+# Models for SEO for the Home page
 class HomeMeta(models.Model):
     title = models.CharField(max_length=200)
     keywords = models.CharField(max_length=250, null=True, blank=True)
@@ -176,4 +177,19 @@ class HomeMeta(models.Model):
     def __str__(self):
         return self.title
 
-    
+
+# Models for SEO for the Blog page 
+class BlogMeta(models.Model):
+    title = models.CharField(max_length=200)
+    keywords = models.TextField()
+    description = models.TextField()
+    created_at = models.DateTimeField(default=now, editable=False)
+    updated_at = models.DateTimeField(default=now)
+
+    def save(self, *args, **kwargs):
+        self.updated_at = now()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+

@@ -16,6 +16,7 @@ from .models import (
     HomeContent,
     ServiceMeta,
     HomeMeta,
+    BlogMeta,
 )
 
 
@@ -33,7 +34,9 @@ admin.site.register(HomeContent)
 admin.site.register(ServiceMeta)
 admin.site.register(HomeMeta)
 
-
+@admin.register(BlogMeta)
+class BlogMetaAdmin(admin.ModelAdmin):
+    list_display = ('title', 'created_at', 'updated_at')
 
 
 # class GalleryImageAdminForm(forms.ModelForm):
