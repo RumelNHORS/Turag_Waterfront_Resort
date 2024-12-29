@@ -149,3 +149,14 @@ class ResortInfo(models.Model):
     class Meta:
         verbose_name = "Resort Information"
         verbose_name_plural = "Resort Information"
+
+
+# Meta class for SEO for the Services page
+class ServiceMeta(models.Model):
+    title = models.CharField(max_length=200)
+    keywords = models.CharField(max_length=250, null=True, blank=True)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title
+    

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView
-from .models import GalleryImage, AboutSection, CarouselItem, RoomFeature, RoomOffer, Blog, ResortInfo, HomeContent
+from .models import GalleryImage, AboutSection, CarouselItem, RoomFeature, RoomOffer, Blog, ResortInfo, HomeContent, ServiceMeta
 from .forms import ContactForm, BookingForm
 from django.views import View
 
@@ -65,11 +65,19 @@ def services(request):
     room_offers = RoomOffer.objects.all()
     room_features = RoomFeature.objects.all()
     social_media_info = ResortInfo.objects.first() 
+
+    # Fetch the meta data for the services page
+    meta_data = ServiceMeta.objects.first() 
     
     return render(request, 'services.html', {
         'room_offers': room_offers,
         'room_features': room_features,
         'social_media_info': social_media_info,
+
+        # Pass the meta data to the template
+        'meta_title': meta_data.title if meta_data else 'Default Title',
+        'meta_keywords': meta_data.keywords if meta_data else 'Default Keywords',
+        'meta_description': meta_data.description if meta_data else 'Default Description',
     })
 
 def gallery(request):

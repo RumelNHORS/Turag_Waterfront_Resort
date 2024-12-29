@@ -13,7 +13,8 @@ from .models import (
     Booking,
     Contact,
     ResortInfo,
-    HomeContent
+    HomeContent,
+    ServiceMeta,
 )
 
 
@@ -28,6 +29,7 @@ admin.site.register(Booking)
 admin.site.register(Contact)
 admin.site.register(ResortInfo)
 admin.site.register(HomeContent)
+admin.site.register(ServiceMeta)
 
 
 

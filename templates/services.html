@@ -3,8 +3,19 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <title>Hotel Booking Website</title>
+  <title>Hotel Booking Website | {{ meta_title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Meta tags -->
+  {% comment %} <meta name="title" property="og:title" content="turagwaterfrontreort.com">
+  <meta name="Keywords" content="HTML, Python, CSS, SQL, JavaScript, How to, PHP, Java, C, C++, C#, jQuery, Bootstrap, Colors, W3.CSS, XML, MySQL, Icons, NodeJS, React, Graphics, Angular, R, AI, Git, Data Science, Code Game, Tutorials, Programming, Web Development, Training, Learning, Quiz, Exercises, Courses, Lessons, References, Examples, Learn to code, Source code, Demos, Tips, Website">
+
+  <meta name="Description" content="Well organized and easy to understand Web building tutorials with lots of examples of how to use HTML, CSS, JavaScript, SQL, Python, PHP, Bootstrap, Java, XML and more."> {% endcomment %}
+
+  <meta name="title" content="{{ meta_title }}">
+  <meta name="keywords" content="{{ meta_keywords }}">
+  <meta name="description" content="{{ meta_description }}">
+  <meta property="og:title" content="{{ meta_title }}">
+  
    <!-- FontAwesome for icons -->
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <!-- Custom CSS -->
