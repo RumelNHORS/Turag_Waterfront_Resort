@@ -40,7 +40,7 @@ def index(request):
         'social_media_info': social_media_info,
         'content': content,
 
-        'meta_title': meta_data.title if meta_data else 'Turag Water Front Resort',
+        'meta_title': meta_data.title if meta_data else '',
         'meta_keywords': meta_data.keywords if meta_data else 'Keywords',
         'meta_description': meta_data.description if meta_data else 'Meta Description',
 
@@ -83,7 +83,7 @@ def services(request):
         'social_media_info': social_media_info,
 
         # Pass the meta data to the template
-        'meta_title': meta_data.title if meta_data else 'Turag Water Front Resort',
+        'meta_title': meta_data.title if meta_data else '',
         'meta_keywords': meta_data.keywords if meta_data else 'Keywords',
         'meta_description': meta_data.description if meta_data else 'Meta Description',
     })
@@ -107,7 +107,7 @@ def blog(request):
         'social_media_info': social_media_info,
 
         # Pass the meta data to the template
-        'meta_title': meta_data.title if meta_data else 'Turag Water Front Resort',
+        'meta_title': meta_data.title if meta_data else '',
         'meta_keywords': meta_data.keywords if meta_data else 'Keywords',
         'meta_description': meta_data.description if meta_data else 'Meta Description',
     })
@@ -153,7 +153,7 @@ class BlogDetailView(DetailView):
 
         # Fetch dynamic meta tags for the blog detail page
         meta_data = BlogMeta.objects.first()
-        context['meta_title'] = meta_data.title if meta_data else 'Turag Water Front Resort'
+        context['meta_title'] = meta_data.title if meta_data else ''
         context['meta_keywords'] = meta_data.keywords if meta_data else 'Keywords'
         context['meta_description'] = meta_data.description if meta_data else 'Meta Description'
 
