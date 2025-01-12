@@ -266,16 +266,21 @@ header.sticky ul li a {
   transform: translate(-50%, -50%); /* Center the video */
 }
 
-
+.home h2{
+  font-size: 70px;
+  margin-top: 184px;
+}
 .home h1 {
   font-family: 'Great Vibes', cursive;
-  font-size: 150px;
+  font-size: 90px;
   color: white;
-  padding-top: 10%;
+  padding-top: 3%;
 }
 
 .home p {
   color: white;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .home .content {
@@ -1149,11 +1154,19 @@ footer .content {
   .head .container {
     flex-direction: column;
   }
-
-  .home h1 {
-    font-size: 70px;
+  .home h2 {
+    font-size: 44px;
+    margin-top: 40px;
   }
+  .home h1 {
+    font-size: 38px;
 
+  }
+  .home p {
+    color: white;
+    width: 90%;
+    margin: 0 auto;
+  }
   .grid2,
   footer .grid,
   .blog .grid,
