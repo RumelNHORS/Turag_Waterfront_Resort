@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.timezone import now
-
+from django.utils.text import slugify
 
 
 class HomeContent(models.Model):
@@ -72,9 +72,20 @@ class RoomFacility(models.Model):
 
 class Blog(models.Model):
     blog_title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True, blank=True)
     content = models.TextField()
     image = models.ImageField(upload_to='blog_images/')
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            original_slug = slugify(self.blog_title)
+            queryset = Blog.objects.filter(slug__startswith=original_slug).count()
+            if queryset:
+                self.slug = f"{original_slug}-{queryset + 1}"
+            else:
+                self.slug = original_slug
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.blog_title

@@ -158,9 +158,8 @@
                             <h3>{{ blog.blog_title }}</h3>
                             {% comment %} <p>{{ blog.content|truncatewords:30 }}</p> {% endcomment %}
                             <p>{{ blog.content|strip_tags|truncatewords:30 }}</p>
-                            {% comment %} <a href="#">Read More <i class='far fa-long-arrow-alt-right'></i> </a> {% endcomment %}
-                            <a href="{% url 'blog_detail' blog.id %}">Read More <i class='far fa-long-arrow-alt-right'></i></a>
-                        </div>
+                            <a href="{% url 'blog_detail' blog.slug %}">Read More <i class='far fa-long-arrow-alt-right'></i></a>
+                      </div>
                     </div>
                 {% endfor %}
             </div>
